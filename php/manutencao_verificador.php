@@ -12,5 +12,4 @@ if($pg_result['sysconfig_valor'] == "true"){
     exit();
 }
 pg_close($cconn);
-exit();
 ?>
