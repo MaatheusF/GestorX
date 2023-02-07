@@ -16,8 +16,10 @@ $pg_result_login = pg_query($cconn, $pg_query_login);
 //Verifica se ouve retorno de alguma informação
 if(pg_num_rows($pg_result_login) >= 1){
     $result = pg_fetch_assoc($pg_result_login);
-    //setcookie($user_accont_username, $result['usua_usuario'], time() + (86400 * 30), "/");
-    header('../index2.php');
+    setcookie("user_account_id", $result['codigo'], time() + (21600 * 30), "/"); // 86400 = 1 day
+    setcookie("user_account_login", $result['usua_login'], time() + (21600 * 30), "/"); // 86400 = 1 day
+    setcookie("user_account_rank", $result['usua_rank'], time() + (21600 * 30), "/"); // 86400 = 1 day
+    header('Location: ../main.php');
 } else {
     $_SESSION['login_error_login'] = 'invalid_user';
     header('Location: ../index.php');
