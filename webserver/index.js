@@ -5,10 +5,11 @@ const port = 8080;
 
 // == Importações dos Métodos/Rotas do WebService
 const teste3 = require('./teste3');
+const info = require('./Rotas/Info');
 
 
 // == Listenes do WebService
-const requestListener = function (req, res) {
+const requestListener = async function (req, res) {
 
     // == OLD == 
         // Ao utilizar Retorno Direto:
@@ -22,9 +23,9 @@ const requestListener = function (req, res) {
     //Switch de Rotas
     switch (req.url) {
 
-        case "/rota1":
+        case "/Info":
             res.writeHead(200);
-            res.end('teste ' + teste());
+            res.end(JSON.stringify(await info.Info()));
             break
 
         //Rota Teste com importação
